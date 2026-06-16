@@ -32,6 +32,7 @@
 #include "fmt.h"
 #include "ndelay.h"
 #include "iopause.h"
+#include "ltime.h"
 
 #define USAGE " [-ttv] [-r c] [-R abc] [-l len] [-b buflen] dir ..."
 #define VERSION "$Id$"
@@ -746,12 +747,7 @@ int main(int argc, char **argv) {
         break;
       }
       if (! linelen && timestamp) {
-        taia_now(&now);
-        switch (timestamp) {
-        case 1: fmt_taia(stamp, &now); break;
-        case 2: fmt_ptime(stamp, &now); break;
-        case 3: fmt_ptime_iso8601(stamp, &now); break;
-        }
+        ltime(stamp);
         stamp[25] =' '; stamp[26] =0;
       }
       if (ch == '\n') break;
