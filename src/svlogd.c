@@ -747,7 +747,12 @@ int main(int argc, char **argv) {
         break;
       }
       if (! linelen && timestamp) {
-        ltime(stamp);
+
+        switch (timestamp) {
+        case 1: taia_now(&now);fmt_taia(stamp, &now); break;
+        case 2: ltime(stamp, ' '); break;
+        case 3: ltime(stamp, 'T'); break;
+        }
         stamp[25] =' '; stamp[26] =0;
       }
       if (ch == '\n') break;
