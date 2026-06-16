@@ -1,3 +1,5 @@
+#ifndef LTIME_H
+#define LTIME_H
 #include <stdio.h>
 #include <time.h>
 
@@ -12,3 +14,4 @@ static inline void ltime(char *buf) {
            tm.tm_mon + 1, tm.tm_mday, tm.tm_hour, tm.tm_min, tm.tm_sec,
            ts.tv_nsec / 10000);
 }
+#endif
